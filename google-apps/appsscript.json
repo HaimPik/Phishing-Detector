@@ -1,0 +1,49 @@
+{
+  "timeZone": "America/New_York",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Gmail",
+        "version": "v1",
+        "serviceId": "gmail"
+      }
+    ]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "urlFetchWhitelist": [
+    "https://spam-module-h4zdrgr3eq-zf.a.run.app/",
+    "https://spam-module-h4zdrgr3eq-zf.a.run.app/predict"
+  ],
+  "addOns": {
+    "common": {
+      "name": "Phishing Scanner",
+      "logoUrl": "https://www.gstatic.com/images/branding/product/1x/apps_script_48dp.png",
+      "useLocaleFromApp": true
+    },
+    "gmail": {
+      "contextualTriggers": [
+        {
+          "unconditional": {},
+          "onTriggerFunction": "onGmailMessage"
+        }
+      ],
+      "composeTrigger": {
+        "selectActions": [
+          {
+            "text": "Scan for Phishing",
+            "runFunction": "onGmailMessage"
+          }
+        ]
+      }
+    }
+  },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.readonly",
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/script.locale",
+    "https://www.googleapis.com/auth/gmail.addons.current.action.compose",
+    "https://www.googleapis.com/auth/script.external_request"
+  ]
+}
